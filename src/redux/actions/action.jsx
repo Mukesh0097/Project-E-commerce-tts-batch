@@ -7,6 +7,7 @@ export const setProduct = (product)=>{
 }
 
 export const selectProduct = (product)=>{
+   
     return {
         type:"SELECT_PRODUCT",
         payload:product
