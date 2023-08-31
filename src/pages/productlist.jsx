@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const ProductList = () => {
   //take state from store
   const product = useSelector((state) => state);
-
+  console.log(product)
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -20,4 +20,32 @@ export const removeProduct = ()=>{
     }
 }
 
+export const addToCart = (product)=>{
+    return {
+        type:"ADD_PRODUCT_TOCART",
+        payload:product
+    }
+}
+
+export const increaseItem = (id) => {
+    return {
+        type:"INCREASE_ITEM",
+        payload:id
+    }
+}
+
+export const decreaseItem = (id) => {
+    return {
+        type:"DECREASE_ITEM",
+        payload:id
+    }
+}
+
+export const removeCartItem = (id)=>{
+    return {
+        type:"REMOVE_TOCART",
+        payload:id
+    }
+}
+
 

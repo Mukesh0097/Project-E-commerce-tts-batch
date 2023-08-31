@@ -1,11 +1,16 @@
 import { GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import './header.css'
+import "./header.css";
 const Header = () => {
+  const product = useSelector((state) => state);
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{boxShadow:"rgba(0, 0, 0, 0.24) 0px 3px 8px"}}>
+      <nav
+        className="navbar navbar-expand-lg bg-body-tertiary"
+        style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+      >
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
             <GiShoppingCart style={{ fontSize: "2rem" }} />
@@ -52,7 +57,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <Link to="/cart" className="nav-link">
-                  cart(0)
+                  cart({product.cartProduct.length})
                 </Link>
               </li>
             </ul>
