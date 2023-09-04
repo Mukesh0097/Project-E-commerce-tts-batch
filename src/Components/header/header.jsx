@@ -1,10 +1,18 @@
-import { GiShoppingCart } from "react-icons/gi";
+import { GiCuauhtli, GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { filterProduct } from "../../redux/actions/action";
 
 import "./header.css";
+import { useState } from "react";
 const Header = () => {
-  const product = useSelector((state) => state);
+  const product = useSelector(state=>state);
+  const dispatch = useDispatch();
+
+  function filterInput(e) {
+    dispatch(filterProduct(e.target.value));
+  }
+
   return (
     <>
       <nav
@@ -34,6 +42,8 @@ const Header = () => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={filterInput}
+                onBlur={() => {}}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
@@ -43,11 +53,6 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/" className="nav-link ">
                   Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  register
                 </Link>
               </li>
               <li className="nav-item">

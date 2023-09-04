@@ -1,4 +1,4 @@
-
+//product listing
 export const setProduct = (product)=>{
     return {
         type:"SET_PRODUCT",
@@ -14,11 +14,22 @@ export const selectProduct = (product)=>{
     }
 }
 
+export const filterProduct = (value)=>{
+    return {
+        type:"FILTER_PRODUCT",
+        text:value
+    }
+}
+
+
 export const removeProduct = ()=>{
     return {
         type:"REMOVE_PRODUCT",
     }
 }
+
+
+//cart
 
 export const addToCart = (product)=>{
     return {
@@ -47,5 +58,7 @@ export const removeCartItem = (id)=>{
         payload:id
     }
 }
+
+
 
 
