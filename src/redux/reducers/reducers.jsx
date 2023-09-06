@@ -17,7 +17,6 @@ const productListReducer = (state = initialData, action) => {
       });
 
       let appliedFilters = state.appliedFilters;
-
       if (value) {
         let index = appliedFilters.indexOf("FILTER_PRODUCT");
         if (index === -1) appliedFilters.push("FILTER_PRODUCT");

@@ -9,6 +9,7 @@ const Header = () => {
   const product = useSelector(state=>state);
   const dispatch = useDispatch();
 
+  
   function filterInput(e) {
     dispatch(filterProduct(e.target.value));
   }
