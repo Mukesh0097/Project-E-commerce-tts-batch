@@ -1,17 +1,23 @@
 import { GiCuauhtli, GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { filterProduct } from "../../redux/actions/action";
+import {authChecking } from "../../redux/actions/action";
 
 import "./header.css";
 import { useState } from "react";
 const Header = () => {
-  const product = useSelector(state=>state);
+  const product = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  
   function filterInput(e) {
     dispatch(filterProduct(e.target.value));
+  }
+
+
+  function togglebuttonForAuth(){
+      dispatch(authChecking(false))
+      console.log(product)
   }
 
   return (
@@ -57,9 +63,15 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  login
-                </Link>
+                {product.isUserLoggedIn ? (
+                  <Link to="/login" className="nav-link" onClick={togglebuttonForAuth}>
+                    logout
+                  </Link>
+                ) : (
+                  <Link to="/login" className="nav-link">
+                    login
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
                 <Link to="/cart" className="nav-link">

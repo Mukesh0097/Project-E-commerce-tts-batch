@@ -1,10 +1,10 @@
-import Login from "./pages/login";
+import Login from "./pages/Auth/login";
 import { Routes, Route } from "react-router-dom";
 
-import Register from "./pages/register";
-import Cart from "./pages/cart";
-import ProductList from "./pages/productlist";
-import Productdetail from "./pages/product-detail";
+import Register from "./pages/Auth/register";
+import Cart from "./pages/product/cart";
+import ProductList from "./pages/product/productlist";
+import Productdetail from "./pages/product/product-detail";
 import "./App.css";
 
 function App() {
