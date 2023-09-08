@@ -3,13 +3,10 @@ import Header from "../../Components/header/header";
 import Footer from "../../Components/footer/footer";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaTwitter, FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../config/firebaseconfig";
-import { useDispatch,useSelector} from "react-redux";
-import {authChecking } from "../../redux/actions/action";
-
 import "./login.css";
 
 const validationSchema = Yup.object().shape({
@@ -23,24 +20,22 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
-    const data = useSelector(state=>state)
-    console.log(data)
-  const dispatch = useDispatch();
-
-  const handleSubmit = async (values,action) => {
+  const Navigation = useNavigate();
+  const handleSubmit = async (values, action) => {
     try {
-      const user = await signInWithEmailAndPassword(
+      const data = await signInWithEmailAndPassword(
         Auth,
         values.email,
         values.password
       );
-      if(user){
-        dispatch(authChecking(true))
+      if (data) {
+        localStorage.setItem("user", data.user.accessToken);
+        Navigation("/");
       }
     } catch (err) {
       console.log(err);
     }
-   action.resetForm()
+    action.resetForm();
   };
   return (
     <>

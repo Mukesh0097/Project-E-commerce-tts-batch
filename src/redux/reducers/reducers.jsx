@@ -74,7 +74,6 @@ const addToCartReducer = (state = [], action) => {
 //authentication
 
 const Authentication = (state = false, action) => {
-  console.log(action)
   switch (action.type) {
     case "LOGGED_IN":
       return action.payload;
@@ -82,6 +81,8 @@ const Authentication = (state = false, action) => {
       return state;
   }
 };
+
+
 
 const productreducer = {
   productListReducer,

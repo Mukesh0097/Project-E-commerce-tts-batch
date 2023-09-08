@@ -40,15 +40,10 @@ const Cart = () => {
               <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">{element.title}</h5>
-                  <h3 class="card-subtitle mb-2 text-body-secondary">
+                  <h3 className="card-subtitle mb-2 text-body-secondary">
                     Price: <span className="">&#x20B9;{element.price} </span>
                   </h3>
-                  <p className="cart-text">
-                    <div
-                      className="btn-group btn-group-sm"
-                      role="group"
-                      aria-label="Small button group"
-                    >
+                  <p className="cart-text btn-group btn-group-sm">
                       <button
                         type="button"
                         className="btn btn-outline-dark"
@@ -72,13 +67,13 @@ const Cart = () => {
                       >
                         +
                       </button>
-                    </div>
+                    {/* </div> */}
                   </p>
                   <p className="card-text">
                     <button
                       type="button"
                       id={element.id}
-                      class="btn btn-danger"
+                      className="btn btn-danger"
                       onClick={(e) => {
                         removeItemFromCart(e.target.id);
                       }}

@@ -3,7 +3,7 @@ import Header from "../../Components/header/header";
 import Footer from "../../Components/footer/footer";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProduct, removeProduct } from "../../redux/actions/action";
+import { setProduct, removeProduct, authChecking } from "../../redux/actions/action";
 
 import "./productlist.css";
 import { Link } from "react-router-dom";
