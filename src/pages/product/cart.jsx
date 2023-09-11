@@ -8,8 +8,8 @@ import {
   removeCartItem,
 } from "../../redux/actions/action";
 const Cart = () => {
-  const product = useSelector((state) => state);
-  console.log(product);
+  const storeData = useSelector((state) => state);
+  
   const dispatch = useDispatch();
 
   function incrementItem(id) {
@@ -27,7 +27,7 @@ const Cart = () => {
     <>
       <Header />
       <Layout>
-        {product.cartProduct.map((element) => (
+        {storeData.cartProduct.map((element) => (
           <div className="card mb-3" style={{ maxWidth: 540 }} key={element.id}>
             <div className="row g-0">
               <div className="col-md-4">

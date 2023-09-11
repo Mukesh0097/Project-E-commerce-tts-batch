@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const Header = () => {
   const product = useSelector((state) => state);
   const dispatch = useDispatch();
-  const Navigation = useNavigate()
+  const Navigation = useNavigate();
 
   function filterInput(e) {
     dispatch(filterProduct(e.target.value));
@@ -19,8 +19,7 @@ const Header = () => {
   function togglebuttonForAuth() {
     dispatch(authChecking(false));
     localStorage.removeItem("user");
-    Navigation('/')
-    
+    Navigation("/");
   }
 
   return (

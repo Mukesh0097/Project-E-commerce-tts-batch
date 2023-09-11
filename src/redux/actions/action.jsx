@@ -60,15 +60,20 @@ export const removeCartItem = (id)=>{
     }
 }
 
+
+
+
 // Authentication
 
 export const authChecking = (flag)=>{
-    console.log(flag)
+    
     return {
         type:"LOGGED_IN",
         payload:flag
     }
 }
+
+
 
 
 

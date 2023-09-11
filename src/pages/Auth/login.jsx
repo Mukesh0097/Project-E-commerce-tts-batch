@@ -5,9 +5,12 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaTwitter, FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../config/firebaseconfig";
 import "./login.css";
+import { authChecking } from "../../redux/actions/action";
+import { useState } from "react";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -21,6 +24,7 @@ const validationSchema = Yup.object().shape({
 
 const Login = () => {
   const Navigation = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = async (values, action) => {
     try {
       const data = await signInWithEmailAndPassword(
@@ -30,10 +34,17 @@ const Login = () => {
       );
       if (data) {
         localStorage.setItem("user", data.user.accessToken);
+        const token = localStorage.getItem("user");
+        if (token) {
+          dispatch(authChecking(true));
+        }
         Navigation("/");
       }
     } catch (err) {
       console.log(err);
+      setloginModeError((prev) => {
+        return { ...prev, message: err.message, isError: true };
+      });
     }
     action.resetForm();
   };
@@ -106,6 +117,14 @@ const Login = () => {
                         Login
                       </button>
                     </div>
+                    {loginModeError.isError && (
+                      <p className="text-danger text-center fw-bold text-capitalize my-3 py-2 bg-success-subtle">
+                        {loginModeError.message.substring(
+                          22,
+                          loginModeError.message.length - 2
+                        )}
+                      </p>
+                    )}
 
                     <div className="mb-3 mt-3 text-center">
                       Don't have an account?{" "}
