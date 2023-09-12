@@ -2,7 +2,7 @@ import Login from "./pages/Auth/login";
 import { Routes, Route, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Register from "./pages/Auth/register";
-import Cart from "./pages/product/cart";
+import Cart from "./pages/product/cart/cart";
 import ProductList from "./pages/product/productlist";
 import Productdetail from "./pages/product/product-detail";
 import { useSelector, useDispatch } from "react-redux";

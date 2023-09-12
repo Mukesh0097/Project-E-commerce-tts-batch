@@ -47,7 +47,8 @@ const selectedProductReducer = (state = {}, action) => {
 const addToCartReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_PRODUCT_TOCART":
-      return [...state, action.payload];
+      console.log()
+      return [...JSON.parse(localStorage.getItem("cartData"))];
     case "REMOVE_TOCART":
       return state.filter(
         (product) => product.id !== parseFloat(action.payload)

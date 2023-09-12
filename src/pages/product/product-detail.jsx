@@ -1,7 +1,7 @@
 import Layout from "../../Components/layout/layout";
 import Header from "../../Components/header/header";
 import Footer from "../../Components/footer/footer";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, json } from "react-router-dom";
 import Axios from "axios";
 import { selectProduct } from "../../redux/actions/action";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,6 +25,22 @@ const Productdetail = () => {
 
   function addTocart() {
     if (storeData.isUserLoggedIn) {
+      // localStorage.setItem("cartData",JSON.stringify([]));
+      let flag = false
+      const Arry = JSON.parse(localStorage.getItem("cartData") || "[]");
+      let data  = Arry.map((x)=>{
+        if(x.id == storeData.selectedProduct.id){
+          x.Quantity += 1 
+          flag = true
+          return x
+        }
+        return x;
+
+      })
+      if(!flag){
+        data.push({ ...storeData.selectedProduct, Quantity: 1 });
+      }
+      localStorage.setItem("cartData", JSON.stringify(data));
       dispatch(addToCart({ ...storeData.selectedProduct, Quantity: 1 }));
       Navigate("/cart");
     } else {

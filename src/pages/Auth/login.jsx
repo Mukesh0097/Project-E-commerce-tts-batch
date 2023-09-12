@@ -23,6 +23,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
+  const [loginModeError, setloginModeError] = useState({
+    message: "",
+    isError: false,
+  });
   const Navigation = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = async (values, action) => {
@@ -41,7 +45,7 @@ const Login = () => {
         Navigation("/");
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
       setloginModeError((prev) => {
         return { ...prev, message: err.message, isError: true };
       });
