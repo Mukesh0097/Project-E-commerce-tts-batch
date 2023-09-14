@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../../Components/layout/layout";
 import Header from "../../Components/header/header";
 import Footer from "../../Components/footer/footer";
@@ -25,7 +26,6 @@ const Productdetail = () => {
 
   function addTocart() {
     if (storeData.isUserLoggedIn) {
-      // localStorage.setItem("cartData",JSON.stringify([]));
       let flag = false
       const Arry = JSON.parse(localStorage.getItem("cartData") || "[]");
       let data  = Arry.map((x)=>{
@@ -41,7 +41,7 @@ const Productdetail = () => {
         data.push({ ...storeData.selectedProduct, Quantity: 1 });
       }
       localStorage.setItem("cartData", JSON.stringify(data));
-      dispatch(addToCart({ ...storeData.selectedProduct, Quantity: 1 }));
+      dispatch(addToCart(Arry));
       Navigate("/cart");
     } else {
       alert("please login");

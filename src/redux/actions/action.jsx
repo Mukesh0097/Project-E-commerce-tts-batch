@@ -35,7 +35,7 @@ export const removeProduct = ()=>{
 export const addToCart = (product)=>{
     return {
         type:"ADD_PRODUCT_TOCART",
-        // payload:product
+        payload:product
     }
 }
 

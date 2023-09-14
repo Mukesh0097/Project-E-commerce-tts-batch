@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../../Components/layout/layout";
 import Header from "../../Components/header/header";
 import Footer from "../../Components/footer/footer";
@@ -110,7 +111,7 @@ const Login = () => {
                           Remember me
                         </label>
                       </div>
-                      <Link to="{/}">Forgot password?</Link>
+                      <Link to="/forgot/password/reset">Forgot password?</Link>
                     </div>
                     <div>
                       <button
@@ -140,6 +141,7 @@ const Login = () => {
                           Register account
                         </Link>
                       </span>
+                     
                     </div>
                     {/* login */}
                     <div className="text-center">

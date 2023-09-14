@@ -1,3 +1,4 @@
+import React from "react";
 import { GiCuauhtli, GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
